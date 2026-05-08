@@ -49,7 +49,7 @@
             "description": "Supplier frozen food murah dan berkualitas di Balikpapan.",
             "image": "{{ asset('assets/img/frozen-food.png') }}",
             "url": "{{ route('home') }}",
-            "telephone": "+62 812 3456 7890",
+            "telephone": "+62 813-4780-1998",
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Balikpapan",

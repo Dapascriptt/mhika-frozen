@@ -38,7 +38,7 @@
                         <div class="d-flex pt-2">
                             <a class="btn btn-square btn-outline-light rounded-circle me-1" href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-square btn-outline-light rounded-circle me-1" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-square btn-outline-light rounded-circle me-0" href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a class="btn btn-square btn-outline-light rounded-circle me-0" href="https://wa.me/6281347801998" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>

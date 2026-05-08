@@ -26,10 +26,27 @@
 
             <div class="mb-3">
                 <label class="form-label" for="price">Harga</label>
-                <input class="form-control @error('price') is-invalid @enderror" id="price" type="number" min="0" step="100" name="price" value="{{ old('price', $product->price ?? 0) }}" required>
-                @error('price')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                @php
+                    $priceValue = old('price', $product->price ?? 0);
+                    $priceNumber = (int) preg_replace('/\D/', '', (string) $priceValue);
+                @endphp
+                <div class="input-group">
+                    <span class="input-group-text">Rp</span>
+                    <input
+                        class="form-control @error('price') is-invalid @enderror"
+                        id="price_display"
+                        type="text"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        value="{{ number_format($priceNumber, 0, ',', '.') }}"
+                        placeholder="32.000"
+                        required>
+                    <input id="price" type="hidden" name="price" value="{{ $priceNumber }}">
+                    @error('price')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-text">Ketik angka saja, contoh: 32000. Sistem akan menampilkan Rp 32.000.</div>
             </div>
 
             <div class="mb-3">
@@ -77,3 +94,30 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const priceDisplay = document.getElementById('price_display');
+            const priceInput = document.getElementById('price');
+            const productForm = priceDisplay ? priceDisplay.closest('form') : null;
+
+            if (!priceDisplay || !priceInput || !productForm) return;
+
+            const formatter = new Intl.NumberFormat('id-ID');
+            const onlyDigits = function (value) {
+                return (value || '').replace(/\D/g, '');
+            };
+
+            const syncPrice = function () {
+                const digits = onlyDigits(priceDisplay.value);
+                priceInput.value = digits || '0';
+                priceDisplay.value = digits ? formatter.format(Number(digits)) : '';
+            };
+
+            priceDisplay.addEventListener('input', syncPrice);
+            priceDisplay.addEventListener('blur', syncPrice);
+            productForm.addEventListener('submit', syncPrice);
+        });
+    </script>
+@endpush

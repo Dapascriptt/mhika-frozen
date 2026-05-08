@@ -90,6 +90,10 @@ class ProductController extends Controller
 
     private function validateProduct(Request $request): array
     {
+        $request->merge([
+            'price' => preg_replace('/\D/', '', (string) $request->input('price', '0')) ?: 0,
+        ]);
+
         return $request->validate([
             'name' => 'required|string|max:150',
             'category_id' => 'nullable|exists:categories,id',

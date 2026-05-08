@@ -6,6 +6,8 @@
             : ['images/products/thumbs/' . $image, 'images/products/originals/' . $image])
         : [];
     $imagePath = collect($candidatePaths)->first(fn ($path) => file_exists(public_path($path))) ?? 'assets/img/product-1.jpg';
+    $whatsappMessage = 'Halo Mhika Frozen Food, saya mau order ' . $product->name . '.';
+    $whatsappUrl = 'https://wa.me/6281347801998?text=' . rawurlencode($whatsappMessage);
 @endphp
 
 <div class="product-item h-100">
@@ -30,7 +32,7 @@
     </div>
     <div class="product-card-action d-flex border-top">
         <small class="w-100 text-center py-2">
-            <a class="text-body" href="{{ route('contact') }}"><i class="fa fa-shopping-bag text-primary me-2"></i>Order</a>
+            <a class="text-body" href="{{ $whatsappUrl }}" target="_blank" rel="noopener"><i class="fab fa-whatsapp text-primary me-2"></i>Order</a>
         </small>
     </div>
 </div>

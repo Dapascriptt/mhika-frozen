@@ -753,6 +753,8 @@ body {
     position: relative;
     isolation: isolate;
     overflow: hidden;
+    background: url(../img/bg1.jpeg) center right no-repeat;
+    background-size: cover;
 }
 
 .modern-page-header::before {
@@ -760,8 +762,8 @@ body {
     inset: 0;
     content: "";
     background:
-        linear-gradient(90deg, rgba(255, 251, 248, .96), rgba(255, 251, 248, .72)),
-        rgba(158, 59, 47, .08);
+        linear-gradient(90deg, rgba(255, 251, 248, .96) 0%, rgba(255, 251, 248, .82) 45%, rgba(255, 251, 248, .42) 100%),
+        rgba(158, 59, 47, .06);
     z-index: -1;
 }
 

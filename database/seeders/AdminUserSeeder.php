@@ -14,8 +14,8 @@ class AdminUserSeeder extends Seeder
     {
         $data = [
             'name' => 'Admin Mhika',
-            'email' => 'admin@mhika.test',
-            'password' => Hash::make('password'),
+            'email' => 'mhikafrozen@gmail.com',
+            'password' => Hash::make('pemuda123'),
             'is_admin' => true,
             'updated_at' => now(),
         ];
@@ -28,7 +28,7 @@ class AdminUserSeeder extends Seeder
             $data['role'] = 'admin';
         }
 
-        $existingUser = User::where('email', 'admin@mhika.test')->first();
+        $existingUser = User::where('email', 'mhikafrozen@gmail.com')->first();
 
         if ($existingUser) {
             DB::table('users')->where('id', $existingUser->id)->update($data);

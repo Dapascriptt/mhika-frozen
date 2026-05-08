@@ -13,6 +13,8 @@
                 : ['images/products/originals/' . $image, 'images/products/thumbs/' . $image])
             : [];
         $imagePath = collect($candidatePaths)->first(fn ($path) => file_exists(public_path($path))) ?? 'assets/img/product-1.jpg';
+        $whatsappMessage = 'Halo Mhika Frozen Food, saya mau order ' . $product->name . '.';
+        $whatsappUrl = 'https://wa.me/6281347801998?text=' . rawurlencode($whatsappMessage);
     @endphp
 
     <div class="container-fluid page-header modern-page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
@@ -45,7 +47,9 @@
                     <h2 class="display-5 mb-3">{{ $product->name }}</h2>
                     <p class="h3 text-primary mb-4">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                     <p>{{ $product->description ?: 'Produk frozen food berkualitas dari Mhika Frozen Food Balikpapan.' }}</p>
-                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="{{ route('contact') }}">Pesan Sekarang</a>
+                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="{{ $whatsappUrl }}" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp me-2"></i>Pesan via WhatsApp
+                    </a>
                 </div>
             </div>
         </div>

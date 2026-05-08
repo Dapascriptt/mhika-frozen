@@ -9,12 +9,11 @@
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="{{ asset('assets/img/carousel-1.jpg') }}" alt="Mhika Frozen Food" width="1920" height="900">
+                    <img class="w-100" src="{{ asset('assets/img/bg1.jpeg') }}" alt="Mhika Frozen Food" width="1920" height="900">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-lg-7 hero-copy">
-                                    <span class="hero-eyebrow animated slideInDown">Supplier Frozen Food Balikpapan</span>
                                     <h1 class="display-2 mb-4 animated slideInDown">Mhika Frozen Food Balikpapan</h1>
                                     <p class="hero-lead animated slideInDown">Pilihan sosis, nugget, bakso, kentang, ayam siap makan, dan aneka frozen food untuk rumah maupun usaha.</p>
                                     <div class="d-flex flex-wrap gap-3 mt-4">
@@ -27,12 +26,12 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="{{ asset('assets/img/carousel-2.jpg') }}" alt="Produk frozen food praktis" width="1920" height="900">
+                    <img class="w-100" src="{{ asset('assets/img/bg2.jpeg') }}" alt="Produk frozen food praktis" width="1920" height="900">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-lg-7 hero-copy">
-                                    <span class="hero-eyebrow animated slideInDown">Stok Siap Masak</span>
+
                                     <div class="display-2 fw-bold mb-5 animated slideInDown">Stok Beku Praktis untuk Setiap Dapur</div>
                                     <a href="{{ route('products.index') }}" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Lihat Katalog</a>
                                 </div>
