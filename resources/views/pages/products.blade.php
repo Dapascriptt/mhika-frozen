@@ -11,8 +11,8 @@
             <h1 class="display-3 mb-3 animated slideInDown">{{ ($currentCategoryName ?? null) ? $currentCategoryName . ' Balikpapan' : 'Produk Frozen Food Balikpapan' }}</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a class="text-body" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item text-dark active" aria-current="page">Products</li>
+                    <li class="breadcrumb-item"><a class="text-body" href="{{ route('home') }}">Beranda</a></li>
+                    <li class="breadcrumb-item text-dark active" aria-current="page">Produk</li>
                 </ol>
             </nav>
         </div>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-lg-7 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                     <div class="filter-pills d-inline-flex flex-wrap gap-2 justify-content-lg-end mb-5">
-                        <a class="btn btn-outline-primary border-2 {{ $selectedCategory ? '' : 'active' }}" href="{{ route('products.index', $search ? ['q' => $search] : []) }}">All</a>
+                        <a class="btn btn-outline-primary border-2 {{ $selectedCategory ? '' : 'active' }}" href="{{ route('products.index', $search ? ['q' => $search] : []) }}">Semua</a>
                         @foreach ($categories as $category)
                             <a class="btn btn-outline-primary border-2 {{ $selectedCategory === $category->slug ? 'active' : '' }}" href="{{ route('categories.show', array_filter(['category' => $category->slug, 'q' => $search])) }}">{{ $category->name }}</a>
                         @endforeach
@@ -121,7 +121,7 @@
                     signal: activeController.signal,
                 })
                     .then(function (response) {
-                        if (!response.ok) throw new Error('Search failed');
+                        if (!response.ok) throw new Error('Pencarian gagal');
                         return response.json();
                     })
                     .then(function (payload) {

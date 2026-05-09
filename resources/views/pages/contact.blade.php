@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us | Mhika Frozen Food Balikpapan')
+@section('title', 'Kontak | Mhika Frozen Food Balikpapan')
 @section('meta_description', 'Hubungi Mhika Frozen Food Balikpapan untuk informasi produk, stok, dan pemesanan frozen food murah berkualitas.')
-@section('meta_keywords', 'contact mhika frozen food, frozen food balikpapan, supplier frozen food balikpapan, jual frozen food balikpapan')
+@section('meta_keywords', 'kontak mhika frozen food, frozen food balikpapan, supplier frozen food balikpapan, jual frozen food balikpapan')
 
 @section('content')
     <div class="container-fluid page-header modern-page-header wow fadeIn" data-wow-delay="0.1s">
         <div class="container">
             <span class="hero-eyebrow">Kontak & Lokasi</span>
-            <h1 class="display-3 mb-3 animated slideInDown">Contact Mhika Frozen Food Balikpapan</h1>
+            <h1 class="display-3 mb-3 animated slideInDown">Kontak Mhika Frozen Food Balikpapan</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a class="text-body" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item text-dark active" aria-current="page">Contact Us</li>
+                    <li class="breadcrumb-item"><a class="text-body" href="{{ route('home') }}">Beranda</a></li>
+                    <li class="breadcrumb-item text-dark active" aria-current="page">Kontak</li>
                 </ol>
             </nav>
         </div>

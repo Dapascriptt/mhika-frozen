@@ -42,11 +42,11 @@
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="visually-hidden">Sebelumnya</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="visually-hidden">Berikutnya</span>
             </button>
         </div>
     </div>
@@ -66,10 +66,37 @@
                     <div class="feature-list">
                         <div><i class="fa fa-check"></i><span>Pilihan kategori lengkap</span></div>
                         <div><i class="fa fa-check"></i><span>Produk mudah disimpan dan cepat disajikan</span></div>
-                        <div><i class="fa fa-check"></i><span>Katalog ringan untuk 100+ gambar produk</span></div>
                     </div>
-                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="{{ route('products.index') }}">Browse Products</a>
+                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="{{ route('products.index') }}">Lihat Produk</a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xxl py-5 modern-section">
+        <div class="container">
+            <div class="row g-0 gx-5 align-items-end">
+                <div class="col-lg-6">
+                    <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                        <span class="section-kicker">Rekomendasi</span>
+                        <h2 class="display-5 mb-3">Produk Unggulan</h2>
+                        <p>Produk pilihan dari database, siap dikembangkan untuk katalog penuh.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+                    <a class="btn btn-outline-primary border-2 rounded-pill mb-5" href="{{ route('products.index') }}">Semua Produk</a>
+                </div>
+            </div>
+            <div class="row g-4">
+                @forelse ($featuredProducts as $product)
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        @include('products.partials.product-card', ['product' => $product])
+                    </div>
+                @empty
+                    <div class="col-12">
+                        <div class="alert alert-light border mb-0">Produk unggulan belum tersedia.</div>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>
@@ -113,34 +140,6 @@
         </div>
     </div>
 
-    <div class="container-xxl py-5 modern-section">
-        <div class="container">
-            <div class="row g-0 gx-5 align-items-end">
-                <div class="col-lg-6">
-                    <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                        <span class="section-kicker">Rekomendasi</span>
-                        <h2 class="display-5 mb-3">Produk Unggulan</h2>
-                        <p>Produk pilihan dari database, siap dikembangkan untuk katalog penuh.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
-                    <a class="btn btn-outline-primary border-2 rounded-pill mb-5" href="{{ route('products.index') }}">Semua Produk</a>
-                </div>
-            </div>
-            <div class="row g-4">
-                @forelse ($featuredProducts as $product)
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        @include('products.partials.product-card', ['product' => $product])
-                    </div>
-                @empty
-                    <div class="col-12">
-                        <div class="alert alert-light border mb-0">Produk unggulan belum tersedia.</div>
-                    </div>
-                @endforelse
-            </div>
-        </div>
-    </div>
-
     <div class="container-fluid bg-primary bg-icon mt-5 py-6 modern-cta">
         <div class="container">
             <div class="row g-5 align-items-center">
@@ -149,7 +148,7 @@
                     <p class="text-white mb-0">Hubungi Mhika Frozen Food untuk informasi produk, ketersediaan, dan pemesanan.</p>
                 </div>
                 <div class="col-md-5 text-md-end wow fadeIn" data-wow-delay="0.5s">
-                    <a class="btn btn-lg btn-secondary rounded-pill py-3 px-5" href="{{ route('contact') }}">Contact Us</a>
+                    <a class="btn btn-lg btn-secondary rounded-pill py-3 px-5" href="{{ route('contact') }}">Hubungi Kami</a>
                 </div>
             </div>
         </div>

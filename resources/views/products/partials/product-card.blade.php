@@ -32,7 +32,7 @@
     </div>
     <div class="product-card-action d-flex border-top">
         <small class="w-100 text-center py-2">
-            <a class="text-body" href="{{ $whatsappUrl }}" target="_blank" rel="noopener"><i class="fab fa-whatsapp text-primary me-2"></i>Order</a>
+            <a class="text-body" href="{{ $whatsappUrl }}" target="_blank" rel="noopener"><i class="fab fa-whatsapp text-primary me-2"></i>Pesan</a>
         </small>
     </div>
 </div>

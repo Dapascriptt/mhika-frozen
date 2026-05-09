@@ -18,9 +18,9 @@
             </div>
             <div class="col-lg-4 col-md-6">
                 <h4 class="text-light mb-4">Menu</h4>
-                <a class="btn btn-link" href="{{ route('home') }}">Home</a>
-                <a class="btn btn-link" href="{{ route('products.index') }}">Products</a>
-                <a class="btn btn-link" href="{{ route('contact') }}">Contact Us</a>
+                <a class="btn btn-link" href="{{ route('home') }}">Beranda</a>
+                <a class="btn btn-link" href="{{ route('products.index') }}">Produk</a>
+                <a class="btn btn-link" href="{{ route('contact') }}">Kontak</a>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a href="{{ route('home') }}">Mhika Frozen Food</a>, All Right Reserved.
+                    &copy; <a href="{{ route('home') }}">Mhika Frozen Food</a>, Semua Hak Dilindungi.
                 </div>
 
             </div>
