@@ -1,10 +1,15 @@
-<aside class="col-lg-2 bg-dark text-white p-0">
-    <div class="position-sticky top-0 min-vh-100 p-3">
-        <a class="d-block text-white text-decoration-none mb-4" href="{{ route('admin.dashboard') }}">
-            <span class="h4 fw-bold">Mhika Admin</span>
+<aside class="col-lg-2 admin-sidebar text-white p-0">
+    <div class="admin-sidebar-inner position-sticky top-0 min-vh-100 p-3">
+        <a class="admin-brand text-white text-decoration-none mb-4" href="{{ route('admin.dashboard') }}">
+            <span class="admin-brand-mark">M</span>
+            <span>
+                <strong>Mhika</strong>
+                <small>Admin Panel</small>
+            </span>
         </a>
 
-        <nav class="nav nav-pills flex-column gap-1">
+        <span class="admin-nav-label">Menu</span>
+        <nav class="admin-nav nav nav-pills flex-column gap-1">
             <a class="nav-link text-white {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
                 <i class="fa fa-tachometer-alt me-2"></i>Dashboard
             </a>
@@ -14,9 +19,10 @@
             <a class="nav-link text-white {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">
                 <i class="fa fa-tags me-2"></i>Kategori
             </a>
-            <a class="nav-link text-white {{ request()->routeIs('admin.messages.*') ? 'active' : '' }}" href="{{ route('admin.messages.index') }}">
-                <i class="fa fa-envelope me-2"></i>Pesan Contact
-            </a>
+        </nav>
+
+        <span class="admin-nav-label mt-4">Aksi</span>
+        <nav class="admin-nav nav nav-pills flex-column gap-1">
             <a class="nav-link text-white" href="{{ route('home') }}" target="_blank">
                 <i class="fa fa-external-link-alt me-2"></i>Lihat Website
             </a>

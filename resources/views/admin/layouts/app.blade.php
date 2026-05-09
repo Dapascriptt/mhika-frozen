@@ -7,17 +7,18 @@
     <title>@yield('title', 'Admin') - Mhika Frozen Food</title>
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/admin.css') }}" rel="stylesheet">
 </head>
 
-<body class="bg-light">
-    <div class="container-fluid">
-        <div class="row min-vh-100">
+<body class="admin-body">
+    <div class="container-fluid admin-shell">
+        <div class="row min-vh-100 g-0">
             @include('admin.partials.sidebar')
 
-            <div class="col-lg-10 ms-sm-auto px-0">
+            <div class="col-lg-10 ms-sm-auto px-0 admin-main">
                 @include('admin.partials.navbar')
 
-                <main class="p-4">
+                <main class="admin-content">
                     @if (session('success'))
                         <div class="alert alert-success">{{ session('success') }}</div>
                     @endif

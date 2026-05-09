@@ -7,10 +7,9 @@ Website katalog dan CMS sederhana untuk **Mhika Frozen Food Balikpapan**. Aplika
 - Frontend publik: Home, Products, Product Detail, Contact.
 - Katalog produk dengan kategori, pencarian live, pagination, dan URL slug.
 - CMS admin custom melalui `/login`.
-- Dashboard admin berisi ringkasan produk, kategori, dan pesan.
+- Dashboard admin berisi ringkasan produk dan kategori.
 - CRUD produk dengan upload gambar.
 - CRUD kategori produk.
-- Manajemen pesan contact.
 - SEO dasar: meta title, description, keywords, canonical, Open Graph, Twitter Card, JSON-LD, sitemap XML, dan robots.txt.
 - Optimasi gambar produk dengan folder thumbnail dan lazy loading.
 
@@ -42,7 +41,6 @@ Admin:
 /admin/dashboard        Dashboard admin
 /admin/products         CRUD produk
 /admin/categories       CRUD kategori
-/admin/messages         Pesan contact
 ```
 
 ## Instalasi
@@ -179,18 +177,6 @@ Ukuran maksimal upload:
 ```text
 2 MB
 ```
-
-## Pesan Contact
-
-Pesan dari halaman contact disimpan ke database `contact_messages`.
-
-Lihat pesan di:
-
-```text
-/admin/messages
-```
-
-Pesan otomatis ditandai sebagai sudah dibaca saat detail pesan dibuka.
 
 ## SEO
 
