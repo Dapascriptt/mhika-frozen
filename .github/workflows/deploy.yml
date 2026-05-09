@@ -1,3 +1,13 @@
+# ╔══════════════════════════════════════════════════════════════╗
+# ║  AutoDeploy v2.2 — GitHub Actions Workflow (STB Armbian Fix) ║
+# ║  Target: deployv2.akhzafachrozy.my.id                        ║
+# ╠══════════════════════════════════════════════════════════════╣
+# ║  CHANGELOG v2.2                                              ║
+# ║  [FIX-6] ZIP sekarang include dotfiles (.env.example, dll)   ║
+# ║  [FIX-6] Output summary menampilkan info permission          ║
+# ║  [FIX-7] Exclude .env dari ZIP (dibuat manual via SSH)       ║
+# ╚══════════════════════════════════════════════════════════════╝
+
 name: 🚀 AutoDeploy v2
 
 on:

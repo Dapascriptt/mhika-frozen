@@ -4,8 +4,38 @@
 @section('page_title', 'Produk')
 
 @section('content')
-    <div class="d-flex justify-content-end mb-3">
-        <a class="btn btn-primary" href="{{ route('admin.products.create') }}">Tambah Produk</a>
+    <div class="admin-panel mb-4">
+        <div class="row g-3 align-items-center">
+            <div class="col-lg-7">
+                <form action="{{ route('admin.products.index') }}" method="GET" class="admin-search-form">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fa fa-search text-primary"></i></span>
+                        <input
+                            type="search"
+                            name="q"
+                            value="{{ $search }}"
+                            class="form-control"
+                            placeholder="Cari nama produk, kategori, atau deskripsi..."
+                            autocomplete="off">
+                        @if ($search)
+                            <a class="btn btn-outline-secondary" href="{{ route('admin.products.index') }}">Reset</a>
+                        @endif
+                        <button class="btn btn-primary" type="submit">Cari</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-5 text-lg-end">
+                <a class="btn btn-primary" href="{{ route('admin.products.create') }}">
+                    <i class="fa fa-plus me-2"></i>Tambah Produk
+                </a>
+            </div>
+        </div>
+
+        @if ($search)
+            <p class="admin-search-note mb-0 mt-3">
+                Menampilkan {{ $products->total() }} hasil untuk <strong>"{{ $search }}"</strong>.
+            </p>
+        @endif
     </div>
 
     <div class="bg-white border rounded table-responsive">
@@ -56,7 +86,9 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center py-4">Produk belum tersedia.</td>
+                        <td colspan="5" class="text-center py-4">
+                            {{ $search ? 'Produk tidak ditemukan.' : 'Produk belum tersedia.' }}
+                        </td>
                     </tr>
                 @endforelse
             </tbody>

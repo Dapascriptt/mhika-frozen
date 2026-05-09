@@ -254,6 +254,26 @@
     padding: 1.25rem;
 }
 
+.admin-search-form .input-group {
+    min-height: 48px;
+}
+
+.admin-search-form .form-control,
+.admin-search-form .input-group-text,
+.admin-search-form .btn {
+    border-color: var(--admin-line);
+}
+
+.admin-search-form .form-control:focus {
+    border-color: rgba(158, 59, 47, .45);
+    box-shadow: 0 0 0 .2rem rgba(158, 59, 47, .12);
+}
+
+.admin-search-note {
+    color: var(--admin-muted);
+    font-size: .92rem;
+}
+
 .panel-heading {
     display: flex;
     align-items: flex-start;
