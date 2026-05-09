@@ -14,7 +14,7 @@
                 <h4 class="text-light mb-4">Kontak</h4>
                 <p><i class="fa fa-map-marker-alt me-3"></i>Balikpapan, Kalimantan Timur</p>
                 <p><i class="fa fa-phone-alt me-3"></i>+62 813-4780-1998</p>
-                <p><i class="fa fa-envelope me-3"></i>mikhafrozen@gmail.com</p>
+                <p><i class="fa fa-envelope me-3"></i>mhikafrozen@gmail.com</p>
             </div>
             <div class="col-lg-4 col-md-6">
                 <h4 class="text-light mb-4">Menu</h4>
