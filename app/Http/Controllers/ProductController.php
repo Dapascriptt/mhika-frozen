@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ProductController extends Controller
 {
@@ -42,7 +43,9 @@ class ProductController extends Controller
         $currentCategoryName = $category?->name ?? $categories->firstWhere('slug', $selectedCategory)?->name;
         $productsBaseUrl = $category ? route('categories.show', $category->slug) : route('products.index');
 
-        $products = Product::with('category')
+        $hasCategoryFilter = $category || $selectedCategory;
+
+        $productsQuery = Product::query()
             ->where('is_active', true)
             ->when($category, function ($query, Category $category) {
                 $query->where('category_id', $category->id);
@@ -57,12 +60,13 @@ class ProductController extends Controller
                         ->orWhere('description', 'like', "%{$search}%")
                         ->orWhereHas('category', function ($categoryQuery) use ($search) {
                             $categoryQuery->where('name', 'like', "%{$search}%");
-                        });
+                    });
                 });
-            })
-            ->latest()
-            ->paginate(12)
-            ->withQueryString();
+            });
+
+        $products = $hasCategoryFilter
+            ? $productsQuery->with('category')->latest()->paginate(12)->withQueryString()
+            : $this->balancedProductPaginator($request, $productsQuery, $categories);
 
         if ($request->ajax()) {
             return response()->json([
@@ -71,5 +75,50 @@ class ProductController extends Controller
         }
 
         return view('pages.products', compact('products', 'categories', 'selectedCategory', 'search', 'currentCategoryName', 'productsBaseUrl'));
+    }
+
+    private function balancedProductPaginator(Request $request, $productsQuery, $categories): LengthAwarePaginator
+    {
+        $perPage = 12;
+        $page = LengthAwarePaginator::resolveCurrentPage();
+
+        $categoryOrder = $categories
+            ->pluck('id')
+            ->values()
+            ->flip();
+
+        $groups = (clone $productsQuery)
+            ->select('id', 'category_id', 'is_featured', 'created_at')
+            ->orderByDesc('is_featured')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id')
+            ->get()
+            ->groupBy(fn ($product) => $product->category_id ?? 0)
+            ->sortBy(fn ($group, $categoryId) => $categoryOrder[$categoryId] ?? PHP_INT_MAX);
+
+        $balancedIds = [];
+        $maxRows = $groups->max(fn ($group) => $group->count()) ?? 0;
+
+        for ($row = 0; $row < $maxRows; $row++) {
+            foreach ($groups as $group) {
+                if (isset($group[$row])) {
+                    $balancedIds[] = $group[$row]->id;
+                }
+            }
+        }
+
+        $pageIds = array_slice($balancedIds, ($page - 1) * $perPage, $perPage);
+        $positions = array_flip($pageIds);
+
+        $products = Product::with('category')
+            ->whereIn('id', $pageIds)
+            ->get()
+            ->sortBy(fn ($product) => $positions[$product->id])
+            ->values();
+
+        return new LengthAwarePaginator($products, count($balancedIds), $perPage, $page, [
+            'path' => $request->url(),
+            'query' => $request->query(),
+        ]);
     }
 }
