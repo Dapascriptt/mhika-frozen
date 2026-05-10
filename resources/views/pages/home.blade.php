@@ -56,7 +56,7 @@
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="about-img modern-image-frame position-relative overflow-hidden p-4">
-                        <img class="img-fluid w-100" src="{{ asset('assets/img/about.jpg') }}" alt="Pilihan frozen food Mhika" loading="lazy" width="600" height="600">
+                        <img class="img-fluid w-100" src="{{ asset('assets/img/frozen.jpeg') }}" alt="Pilihan frozen food Mhika" loading="lazy" width="600" height="600">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
