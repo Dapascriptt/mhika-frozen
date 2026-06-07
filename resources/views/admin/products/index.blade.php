@@ -6,34 +6,57 @@
 @section('content')
     <div class="admin-panel mb-4">
         <div class="row g-3 align-items-center">
-            <div class="col-lg-7">
+            <div class="col-lg-9">
                 <form action="{{ route('admin.products.index') }}" method="GET" class="admin-search-form">
-                    <div class="input-group">
-                        <span class="input-group-text bg-white"><i class="fa fa-search text-primary"></i></span>
-                        <input
-                            type="search"
-                            name="q"
-                            value="{{ $search }}"
-                            class="form-control"
-                            placeholder="Cari nama produk, kategori, atau deskripsi..."
-                            autocomplete="off">
-                        @if ($search)
-                            <a class="btn btn-outline-secondary" href="{{ route('admin.products.index') }}">Reset</a>
-                        @endif
-                        <button class="btn btn-primary" type="submit">Cari</button>
+                    <div class="row g-2">
+                        <div class="col-lg-5">
+                            <div class="input-group h-100">
+                                <span class="input-group-text bg-white"><i class="fa fa-search text-primary"></i></span>
+                                <input
+                                    type="search"
+                                    name="q"
+                                    value="{{ $search }}"
+                                    class="form-control"
+                                    placeholder="Cari nama produk atau deskripsi..."
+                                    autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <select name="category" class="form-select h-100" onchange="this.form.submit()">
+                                <option value="">Semua Kategori</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->slug }}" @selected($selectedCategory === $category->slug)>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-lg-3 d-flex gap-2">
+                            <button class="btn btn-primary flex-fill" type="submit">Cari</button>
+                            @if ($search || $selectedCategory)
+                                <a class="btn btn-outline-secondary" href="{{ route('admin.products.index') }}">Reset</a>
+                            @endif
+                        </div>
                     </div>
                 </form>
             </div>
-            <div class="col-lg-5 text-lg-end">
+            <div class="col-lg-3 text-lg-end">
                 <a class="btn btn-primary" href="{{ route('admin.products.create') }}">
                     <i class="fa fa-plus me-2"></i>Tambah Produk
                 </a>
             </div>
         </div>
 
-        @if ($search)
+        @if ($search || $selectedCategory)
             <p class="admin-search-note mb-0 mt-3">
-                Menampilkan {{ $products->total() }} hasil untuk <strong>"{{ $search }}"</strong>.
+                Menampilkan {{ $products->total() }} produk
+                @if ($search)
+                    untuk <strong>"{{ $search }}"</strong>
+                @endif
+                @if ($selectedCategory)
+                    dalam kategori <strong>{{ $categories->firstWhere('slug', $selectedCategory)?->name }}</strong>
+                @endif
+                .
             </p>
         @endif
     </div>

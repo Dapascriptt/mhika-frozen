@@ -259,12 +259,14 @@
 }
 
 .admin-search-form .form-control,
+.admin-search-form .form-select,
 .admin-search-form .input-group-text,
 .admin-search-form .btn {
     border-color: var(--admin-line);
 }
 
-.admin-search-form .form-control:focus {
+.admin-search-form .form-control:focus,
+.admin-search-form .form-select:focus {
     border-color: rgba(158, 59, 47, .45);
     box-shadow: 0 0 0 .2rem rgba(158, 59, 47, .12);
 }

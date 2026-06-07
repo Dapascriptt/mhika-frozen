@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <span class="section-kicker">Kenapa Mhika</span>
+                    <span class="section-kicker">Kenapa pilih Mhika</span>
                     <h2 class="display-5 mb-4">Frozen Food Praktis untuk Rumah dan Usaha di Balikpapan</h2>
                     <p class="mb-4">Mhika Frozen Food Balikpapan menyediakan produk beku siap masak untuk kebutuhan harian, bekal, dan stok usaha kuliner.</p>
                     <div class="feature-list">

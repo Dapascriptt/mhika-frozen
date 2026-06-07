@@ -14,8 +14,13 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $search = trim((string) $request->query('q', ''));
+        $selectedCategory = $request->query('category');
+        $categories = Category::orderBy('name')->get();
 
         $products = Product::with('category')
+            ->when($selectedCategory, function ($query) use ($selectedCategory) {
+                $query->whereHas('category', fn ($categoryQuery) => $categoryQuery->where('slug', $selectedCategory));
+            })
             ->when($search, function ($query) use ($search) {
                 $query->where(function ($query) use ($search) {
                     $query->where('name', 'like', "%{$search}%")
@@ -27,7 +32,7 @@ class ProductController extends Controller
             ->paginate(15)
             ->withQueryString();
 
-        return view('admin.products.index', compact('products', 'search'));
+        return view('admin.products.index', compact('products', 'search', 'categories', 'selectedCategory'));
     }
 
     public function create()
